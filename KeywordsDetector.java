@@ -17,10 +17,36 @@ public class KeywordsDetector {
         String[] keywords = {"synergy", "disrupt", "leverage", "Paradigm", "transform"};
         detectAndPrint(sentences, keywords);
     }
+    // Iterates through all the sentences.
+    // If a sentence contains one or more of the kewords, prints it.
+    public static boolean contains(String str1, String str2) {
+        if (str1.length() < str2.length()) {
+            return false;
+        }
+        for (int i = 0; i <= str1.length() - str2.length(); i++) {
+            boolean IsFound = true;
+            for (int j = 0; j < str2.length(); j++) {
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    IsFound = false;
+                    break;
+                }
+            }
+            if (IsFound) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+            for (int i = 0; i < sentences.length; i++) {
+                for (int j = 0; j < keywords.length; j++) {
+                    if (contains(sentences[i].toLowerCase(), keywords[j].toLowerCase()) == true) {
+                        System.out.println(sentences[i]);     
+                    }    
+                 }
+            }
+        }
     }
-}
