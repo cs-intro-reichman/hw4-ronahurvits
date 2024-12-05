@@ -1,22 +1,22 @@
 public class Primes {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
-        boolean[] arr = new boolean[n + 1];
-        for (int i = 2; i < arr.length; i++) {
-            arr[i] = true;}
-        int p = 2;
-        while (p < Math.sqrt(n)) {
-            if (arr[p] == true) {
-                int num = p;
-                int currInd = p;
-                while (currInd <= arr.length) {
-                    if (currInd % num == 0) {
-                        arr[currInd] = false;
-                        currInd++;
+        boolean[] arr = new boolean[n+1];
+        for (int i = 2 ; i < arr.length; i++) {
+            arr[i] = true ; 
+        }
+        int pNum = 2;
+        while (pNum < Math.sqrt(n)) {
+            if (arr[pNum] == true) { 
+                for (int i = pNum+1; i < arr.length; i++){
+                    if (arr[i] == true){
+                        if (i % pNum == 0){
+                        arr[i] = false ;
+                        }
                     }
                 }
-            } 
-        p++;
+            }
+        pNum++; 
         }
         System.out.println("Prime numbers up to " + n + ":");
         int counter = 0 ;
